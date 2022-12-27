@@ -10,5 +10,9 @@
         (recur @stop)))
     #(reset! stop true)))
 
+(defn slurp-int [file]
+  (try (Integer/parseInt (slurp file))
+       (catch Exception _ nil)))
+
 #_(def stop (non-stop-poll-action #(println 1) 1000))
 #_(stop)
