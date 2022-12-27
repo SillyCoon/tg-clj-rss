@@ -3,6 +3,7 @@
             [clojure.core :refer [format]]
             [clojure.java.io :as io]
             [clojure.string :as str]
+            [tg-clj-rss.config :as config]
             [org.httpkit.client :as http]))
 
 ; thx @igrishaev
@@ -225,6 +226,17 @@
 ;;
 ;; Dev
 ;;
+
+(def telegram
+  {:token      config/tg-token
+   :user-agent "Clojure 1.10.3"
+   :timeout    300000
+   :keepalive  300000})
+
+
+(get-updates telegram {:timeout 30})
+
+(defn run [])
 
 #_((def telegram
      {:token      "..."

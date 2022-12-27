@@ -14,3 +14,4 @@ pom.xml.asc
 .clj-kondo/
 .lsp/
 output.calva-repl
+.joyride/.nrepl-port
