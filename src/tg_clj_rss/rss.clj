@@ -1,8 +1,8 @@
 (ns tg-clj-rss.rss
   (:require [clojure.data.xml :as xml]
+            [clojure.tools.logging :as logging]
             [org.httpkit.client :as http]
-            [tg-clj-rss.util :refer [slurp-int]]
-            [tg-clj-rss.config :as conf]))
+            [tg-clj-rss.util :refer [slurp-int]]))
 
 (def hash-path "resources/hash")
 
@@ -36,7 +36,8 @@
     pretty-posts))
 
 (defn fetch-posts-if-changed [url]
-  (let [posts (fetch-posts url)]
+  (let [posts (fetch-posts url)
+        _ (logging/info "Posts fetched: " (count posts))]
     (when (posts-changed? posts)
       (update-hash posts)
       posts)))

@@ -227,16 +227,6 @@
 ;; Dev
 ;;
 
-(def telegram
-  {:token      config/tg-token
-   :user-agent "Clojure 1.10.3"
-   :timeout    300000
-   :keepalive  300000})
-
-
-(get-updates telegram {:timeout 30})
-
-(defn run [])
 
 #_((def telegram
      {:token      "..."

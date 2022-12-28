@@ -14,5 +14,8 @@
   (try (Integer/parseInt (slurp file))
        (catch Exception _ nil)))
 
-#_(def stop (non-stop-poll-action #(println 1) 1000))
+(defn pretty-post [{:keys [title link pubDate]}]
+  (str "<b>" title "</b>" "\n" link "\n" pubDate))
+
+#_(def stop (poll #(do (println 1) (println "KEJK")) 1000))
 #_(stop)
