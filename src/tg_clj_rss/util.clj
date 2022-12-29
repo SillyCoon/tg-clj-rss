@@ -1,5 +1,6 @@
 (ns tg-clj-rss.util
-  (:require [clojure.core.async :as async]))
+  (:require [clojure.core.async :as async]
+            [cheshire.core :as json]))
 
 (defn poll [action interval]
   (let [stop (atom false)]
@@ -10,8 +11,8 @@
         (recur @stop)))
     #(reset! stop true)))
 
-(defn slurp-int [file]
-  (try (Integer/parseInt (slurp file))
+(defn slurp-json [file]
+  (try (json/decode (slurp file) true)
        (catch Exception _ nil)))
 
 (defn pretty-post [{:keys [title link pubDate]}]

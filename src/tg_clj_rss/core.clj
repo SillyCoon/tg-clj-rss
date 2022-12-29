@@ -3,7 +3,6 @@
             [tg-clj-rss.rss :refer [fetch-posts-if-changed]]
             [tg-clj-rss.telegram-bot :as tg]
             [tg-clj-rss.util :as u]
-            [cheshire.core :as json]
             [clojure.tools.logging :as logging]
             [clojure.string :as str]))
 
