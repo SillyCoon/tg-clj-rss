@@ -6,19 +6,16 @@
             [clojure.tools.logging :as logging]
             [clojure.string :as str]))
 
-
-
 (def telegram
   {:token      conf/tg-token
    :user-agent "Clojure 1.10.3"
    :timeout    300000
    :keepalive  300000})
 
-
 (defn fetch-posts [] (fetch-posts-if-changed conf/blog-rss-url))
 (defn send-to-tg [posts] (tg/send-message telegram
                                           -1001821656793
-                                          (str/join "\n\n" (map u/pretty-post posts))
+                                          (str "<b>Новый пост в моем блоге:</b>\n\n" (str/join "---\n" (map u/pretty-post posts)))
                                           {:parse-mode "HTML"}))
 
 (defn run [] (u/poll #(when-let [new-posts (fetch-posts)]

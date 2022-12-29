@@ -17,7 +17,7 @@
 
 (defn prettify-post [post]
   (let [pretty-post (replace-tags-with-content post)]
-    (dissoc pretty-post :guid)))
+    (dissoc pretty-post :guid :pubDate)))
 
 (defn get-posts [url]
   (:body @(http/get url)))

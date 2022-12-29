@@ -16,7 +16,7 @@
        (catch Exception _ nil)))
 
 (defn pretty-post [{:keys [title link pubDate]}]
-  (str "<b>" title "</b>" "\n" link "\n" pubDate))
+  (str "<i>" title "</i>" "\n" link "\n" pubDate))
 
 #_(def stop (poll #(do (println 1) (println "KEJK")) 1000))
 #_(stop)
